@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}MediSync AI — Your health, connected{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy reveal">
+    <div class="eyebrow"><span class="live-dot"></span> A smarter way to manage health records</div>
+    <h1>Your health story,<br><span>all in one place.</span></h1>
+    <p class="hero-lede">Bring reports, prescriptions, health history and AI-assisted insights into one calm, secure digital space.</p>
+    <div class="hero-cta"><a class="btn btn-primary btn-large" href="{{ url_for('register') }}">Create your account <span>↗</span></a><a class="text-link" href="#features">Explore the platform <span>↓</span></a></div>
+    <div class="trust-row"><div class="trust-item"><span class="trust-icon">⌁</span><span><b>One health wallet</b><small>Records in one place</small></span></div><div class="trust-item"><span class="trust-icon">✳</span><span><b>AI-assisted insights</b><small>Understand patterns</small></span></div><div class="trust-item"><span class="trust-icon">♧</span><span><b>Role-based access</b><small>Patient · Doctor · Admin</small></span></div></div>
+  </div>
+  <div class="hero-art reveal">
+    <div class="orbit orbit-outer"></div><div class="orbit orbit-inner"></div>
+    <div class="glow-core"><div class="core-cross">✚</div><div class="core-caption">MEDISYNC <b>AI</b></div></div>
+    <div class="float-card float-doc"><span class="mini-icon blue">▤</span><div><small>MEDICAL WALLET</small><b>Reports organized</b><div class="mini-progress"><i></i></div></div><span class="check">✓</span></div>
+    <div class="float-card float-ai"><span class="mini-icon violet">✳</span><div><small>AI INSIGHTS</small><b>Health patterns</b><small class="muted">Review with your doctor</small></div></div>
+    <div class="float-card float-safe"><span class="mini-icon mint">⌑</span><div><small>ACCOUNT SECURITY</small><b>Verified access</b></div></div>
+    <div class="spark spark-one">✦</div><div class="spark spark-two">✧</div>
+  </div>
+</section>
+<section class="metrics-strip"><div><strong>01</strong><span>Unified medical wallet</span></div><div><strong>02</strong><span>Patient & doctor workspaces</span></div><div><strong>03</strong><span>AI-assisted demonstration</span></div><div><strong>04</strong><span>Activity history</span></div></section>
+<section id="features" class="section-block"><div class="section-head"><span class="section-kicker">BUILT AROUND YOU</span><h2>Healthcare information,<br><span>without the clutter.</span></h2><p>A patient-first interface inspired by digital document wallets and modern clinical software.</p></div>
+<div class="feature-grid">
+<article class="feature-card"><div class="feature-symbol symbol-blue">▤</div><span class="card-number">01 / RECORDS</span><h3>Your medical wallet</h3><p>Keep reports, scans and prescriptions organized with searchable document lists and safe file handling.</p><a href="{{ url_for('register') }}">Explore records <span>↗</span></a></article>
+<article class="feature-card"><div class="feature-symbol symbol-purple">✳</div><span class="card-number">02 / INTELLIGENCE</span><h3>AI health indicators</h3><p>Explore a demonstration indicator based on entered values, with transparent limits and doctor-review guidance.</p><a href="{{ url_for('register') }}">Explore AI tools <span>↗</span></a></article>
+<article class="feature-card"><div class="feature-symbol symbol-green">⌁</div><span class="card-number">03 / COLLABORATION</span><h3>Connected care teams</h3><p>Separate workspaces for patients, doctors and administrators, with a timeline and clinical notes.</p><a href="{{ url_for('register') }}">Meet the workflow <span>↗</span></a></article>
+</div></section>
+<section class="closing-banner"><div><span class="section-kicker">START YOUR HEALTH WALLET</span><h2>Make your health records<br>work better for you.</h2></div><a class="btn btn-light btn-large" href="{{ url_for('register') }}">Get started <span>↗</span></a><div class="banner-orb"></div></section>
+{% endblock %}

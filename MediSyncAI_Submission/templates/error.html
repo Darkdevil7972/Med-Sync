@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block title %}{{ code }} · MediSync AI{% endblock %}{% block content %}<section class="error-page"><div class="error-code">{{ code }}</div><h1>Something got in the way.</h1><p>{{ message }}</p><a class="btn btn-primary" href="{{ url_for('dashboard') if g.user else url_for('home') }}">Return to MediSync</a></section>{% endblock %}

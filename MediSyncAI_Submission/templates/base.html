@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}MediSync AI{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+<nav class="topbar">
+  <a class="brand" href="{{ url_for('home') }}"><span class="brand-mark">✚</span><span>MediSync <b>AI</b><small>YOUR HEALTH, CONNECTED</small></span></a>
+  <div class="top-actions">
+  {% if g.user %}
+    <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a>
+    <a class="nav-link" href="{{ url_for('documents') }}">Documents</a>
+    <span class="user-chip"><span class="avatar">{{ g.user['name'][0]|upper }}</span><span>{{ g.user['name'] }}<small>{{ g.user['role']|title }}</small></span></span>
+    <a class="btn btn-quiet btn-small" href="{{ url_for('logout') }}">Sign out</a>
+  {% else %}
+    <a class="nav-link" href="{{ url_for('home') }}#features">Features</a>
+    <a class="btn btn-quiet btn-small" href="{{ url_for('login') }}">Sign in</a>
+    <a class="btn btn-primary btn-small" href="{{ url_for('register') }}">Get started <span>↗</span></a>
+  {% endif %}
+  </div>
+</nav>
+<main class="page-shell">
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}<div class="flash-stack">{% for category, message in messages %}<div class="flash flash-{{ category }}">{{ message }}<button class="flash-close" aria-label="Dismiss">×</button></div>{% endfor %}</div>{% endif %}
+{% endwith %}
+{% block content %}{% endblock %}
+</main>
+<footer class="footer"><a class="brand brand-footer" href="{{ url_for('home') }}"><span class="brand-mark">✚</span><span>MediSync <b>AI</b></span></a><span>Connected care. Clearer records.</span><span class="footer-note">Student project prototype · Not for medical diagnosis</span></footer>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

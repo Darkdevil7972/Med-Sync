@@ -1,0 +1,168 @@
+```html
+{% extends "base.html" %}
+
+{% block title %}AI Health Tools · MediSync AI{% endblock %}
+
+{% block content %}
+
+<section class="dash-welcome">
+    <div>
+        <span class="section-kicker">MEDISYNC INTELLIGENCE / DEMO</span>
+        <h1>Explore health <span>indicators.</span></h1>
+        <p>Enter sample values to see how a transparent demonstration score is displayed.</p>
+    </div>
+    <div class="ai-badge-large">✳ AI DEMO</div>
+</section>
+
+<div class="warning-banner">
+    <span>ⓘ</span>
+    <div>
+        <b>Educational demonstration only</b>
+        <p>
+            This tool provides an educational assessment, not a medical diagnosis.
+            It cannot replace professional medical advice or recommend treatment.
+            Consult a qualified healthcare professional about health concerns.
+        </p>
+    </div>
+</div>
+
+<div class="dashboard-columns ai-layout">
+
+    <section class="panel">
+        <div class="panel-heading">
+            <div>
+                <span class="section-kicker">ASSESSMENT INPUT</span>
+                <h2>Enter sample measurements</h2>
+            </div>
+        </div>
+
+        <form method="POST" class="ai-form">
+
+            <label for="glucose">Glucose (mg/dL)</label>
+            <input
+                type="number"
+                id="glucose"
+                name="glucose"
+                min="40"
+                max="500"
+                step="0.1"
+                placeholder="e.g. 98"
+                value="{{ request.form.get('glucose', '') }}"
+                required
+            >
+            <small>Illustrative range: 40–500 mg/dL</small>
+
+            <label for="systolic">Systolic blood pressure (mmHg)</label>
+            <input
+                type="number"
+                id="systolic"
+                name="systolic"
+                min="60"
+                max="260"
+                step="1"
+                placeholder="e.g. 118"
+                value="{{ request.form.get('systolic', '') }}"
+                required
+            >
+            <small>Illustrative range: 60–260 mmHg</small>
+
+            <label for="bmi">BMI (kg/m²)</label>
+            <input
+                type="number"
+                id="bmi"
+                name="bmi"
+                min="10"
+                max="80"
+                step="0.1"
+                placeholder="e.g. 23.5"
+                value="{{ request.form.get('bmi', '') }}"
+                required
+            >
+            <small>Illustrative range: 10–80 kg/m²</small>
+
+            <button class="btn btn-primary btn-full" type="submit">
+                Calculate demo indicator <span>↗</span>
+            </button>
+
+        </form>
+    </section>
+
+    <section class="panel result-panel">
+
+        {% if result %}
+
+            <span class="section-kicker">DEMO OUTPUT</span>
+
+            <div
+                class="score-ring"
+                style="--score:{{ result.score }}%"
+            >
+                <div>
+                    <strong>
+                        {{ result.score }}<small>/100</small>
+                    </strong>
+                    <span>Indicator score</span>
+                </div>
+            </div>
+
+            <h2>{{ result.level }}</h2>
+
+            <p>
+                Based on the sample values entered.
+                This score is not a probability of disease or a medical diagnosis.
+            </p>
+
+            <div class="result-factors">
+                <div>
+                    <span>Glucose</span>
+                    <b>{{ result.glucose }} mg/dL</b>
+                </div>
+
+                <div>
+                    <span>Systolic BP</span>
+                    <b>{{ result.systolic }} mmHg</b>
+                </div>
+
+                <div>
+                    <span>BMI</span>
+                    <b>{{ result.bmi }}</b>
+                </div>
+            </div>
+
+            <div class="inline-note">
+                Please discuss real measurements with a qualified healthcare professional.
+            </div>
+
+        {% else %}
+
+            <div class="result-placeholder">
+                <div class="result-orb">✳</div>
+
+                <span class="section-kicker">
+                    YOUR RESULTS APPEAR HERE
+                </span>
+
+                <h2>
+                    Clear inputs.<br>
+                    <span>Understandable output.</span>
+                </h2>
+
+                <p>
+                    Submit the form to see the demonstration score and its input summary.
+                </p>
+
+                <div class="placeholder-bars">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </div>
+            </div>
+
+        {% endif %}
+
+    </section>
+
+</div>
+
+{% endblock %}
+```
